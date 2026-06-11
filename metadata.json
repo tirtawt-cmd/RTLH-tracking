@@ -1,0 +1,6 @@
+{
+  "name": "SILPBJ-KALBAR",
+  "description": "Sistem informasi Laporan Pengadaan/Barang Jasa Dinas Perumahan Rakyat dan Kawasan Permukiman",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

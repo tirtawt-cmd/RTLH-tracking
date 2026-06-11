@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with roles and institutional alignment in Kalbar.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "username": { "type": "string" },
+        "fullName": { "type": "string" },
+        "role": { "type": "string", "enum": ["PPK", "Admin", "Penyedia"] },
+        "instansi": { "type": "string" }
+      },
+      "required": ["uid", "username", "fullName", "role", "instansi"]
+    },
+    "PaketPengadaan": {
+      "title": "PaketPengadaan",
+      "description": "Procurement package with administrative, location, and physical progress metrics.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "namaKegiatan": { "type": "string" },
+        "kodeSIRUP": { "type": "string" },
+        "sektor": { "type": "string", "enum": ["Konstruksi", "Konsultansi", "Pengadaan Barang"] },
+        "paguHPS": { "type": "number" },
+        "nilaiKontrak": { "type": "number" },
+        "mitraPenyedia": { "type": "string" },
+        "progresFisik": { "type": "number" },
+        "status": { "type": "string", "enum": ["Persiapan", "Proses Tender", "Kontrak", "Pelaksanaan", "Selesai", "Putus Kontrak"] },
+        "kabupaten": { "type": "string" },
+        "tahunAnggaran": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "id",
+        "namaKegiatan",
+        "kodeSIRUP",
+        "sektor",
+        "paguHPS",
+        "nilaiKontrak",
+        "mitraPenyedia",
+        "progresFisik",
+        "status",
+        "kabupaten",
+        "tahunAnggaran",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "A collection containing credentials and roles of different personnel."
+    },
+    "/pakets/{paketId}": {
+      "schema": "PaketPengadaan",
+      "description": "Procurement packages indexed by ID, synced in real-time."
+    }
+  }
+}
